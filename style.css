@@ -1,0 +1,41 @@
+body {
+    background: lightgray;
+}
+
+section {
+    background:#ffffff;
+}
+
+h1 {
+    color: lightslategray;
+}
+h2 {
+    color: lightslategrey;
+}
+
+h3 {
+    color: rgb(35, 94, 142);
+}
+
+p {
+    color: rgb(56, 84, 121);
+}
+footer {
+color: rgb(64, 94, 133);
+}
+
+.grey-header{
+color: rgb(80, 142, 204);
+}
+
+#top {
+    background: mediumaquamarine;
+}
+
+nav a {
+    color: mediumvioletred;
+}
+
+a {
+    color: orangered !important;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brownells Europe Script</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Main page</a>
+            <br>
+            <a href="nauka-html.html">HTML Learning</a>
+        </nav>
+    </header>
+    <main>
+        <header id="top">
+            <h1>Sales Analysis All</h1>
+            <h4><a href="#problem _description">Problem description</a> </h4>
+            <h4><a href="#solution _description">Solution description</a> </h4>
+        </header>
+
+        <section id="problem_description">
+            <h2 class="grey-header">Problem description</h2>
+
+            <p>It is <strong><em>required</em></strong> to generate excel Sales comparison report with consolidated data
+                from all Partners that belongs to <a href="https://brownells.eu">Brownells Europe</a> group.</p>
+
+        </section>
+        <section id="solution_description">
+            <h2>Solution description</h2>
+
+            <p>1. Use SQL query in <b></b> to generate current <b><i>Sales Analysis Report per Partner</i></b></p>
+            <article>
+                <h3 class="grey-header">Query number one</h3>
+                <p>-- <strong>FROM OINV to count INV</strong> <br>
+
+
+                    SELECT rawdata.itemcode [Item Code],mfc.FirmName [Manufacturer], oitm.SWW [Super Product Name],
+                    oitm.itemname [Item Description],sum(quantity) Quantity, sum(linetotal) [Sales Amount],
+                    sum(grssprofit)
+                    [Gross Profit]
+                    <br>
+                    FROM <br>(
+                    SELECT T1.itemcode,T1.quantity * (case when T1.objtype = 13 then 1 else -1 end)
+                    Quantity,T1.linetotal *
+                    (case when T1.objtype = 13 then 1 else -1 end) LineTotal, T1.grssprofit * (case when T1.objtype = 13
+                    then 1 else -1 end) GrssProfit<br>
+                    FROM INV1 T1<br>
+                    LEFT JOIN OINV T0 on T0.docentry = T1.docentry<br>
+                    WHERE T0.DocDate between '20150101' and '20151231'<br>
+                    UNION ALL</p>
+            </article>
+            <article>
+                <h3>Query number two</h3>
+                <p>
+                    -- SELCT FROM ORIN to reduce by CN
+                    SELECT T1.itemcode,T1.quantity * (case when T1.objtype = 13 then 1 else -1 end) Quantity,
+                    T1.linetotal *
+                    (case when T1.objtype = 13 then 1 else -1 end) LineTotal, T1.grssprofit * (case when T1.objtype = 13
+                    then 1 else -1 end) GrssProfit
+                    FROM RIN1 T1
+                    LEFT JOIN ORIN T0 ON T0.docentry = T1.docentry
+                    WHERE T0.DocDate between '20150101' and '20151231'
+                    ) AS rawdata
+
+                    LEFT JOIN OITM oitm ON oitm.itemcode = rawdata.itemcode
+                    INNER JOIN OMRC mfc ON mfc.FirmCode = oitm.FirmCode
+                    WHERE rawdata.itemcode IS NOT NULL
+                    GROUP BY rawdata.itemcode, mfc.FirmName, oitm.SWW, oitm.itemname
+                    ORDER BY rawdata.itemcode</p>
+            </article>
+            <article>
+                <p>
+                    2. Save results as txt Tab delimited file with correct name. (right click save result as)
+                </p>
+                <p>
+                    3. Replace old text files with new text files in the correct folder.
+                </p>
+                <p>
+                    4. Run Access database
+                </p>
+                <p>
+                    5. Open Sales Analysis Report database
+                </p>
+                <p>
+                    6. Run Query Sales Analysis Report All
+                </p>
+                <p>
+                    7. Export to excel sheet.
+                </p>
+
+            </article>
+        </section>
+    </main>
+    <footer>Document about Sales Analysis All <br><br> <a href="#top">Return to top of the page</a></footer>
+<script src="main.js"></script>
+</body>
+
+</html>
