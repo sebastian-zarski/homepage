@@ -13,16 +13,16 @@
     <header>
         <nav>
             <div class="box"><a href="index.html">Main page</a></div>
-            
-            
+
+
             <div class="box"><a href="nauka-html.html">HTML Learning</a></div>
-           
-            
+
+
             <div class="box"><a href="nauka-css.html">CSS Learning</a></div>
-            
-           
+
+
             <div class="box"><a href="nauka-js.html">JavaScript Learning</a></div>
-            
+
         </nav>
     </header>
     <main>
@@ -45,23 +45,29 @@
             <p>1. Use SQL query in <b></b> to generate current <b><i>Sales Analysis Report per Partner</i></b></p>
             <article>
                 <h3 class="grey-header">Query number one</h3>
-                <p>-- <strong>FROM OINV to count INV</strong> <br>
+                <div class="box-maincode">
+                    <p>-- <strong>FROM OINV to count INV</strong> <br>
 
-
-                    SELECT rawdata.itemcode [Item Code],mfc.FirmName [Manufacturer], oitm.SWW [Super Product Name],
-                    oitm.itemname [Item Description],sum(quantity) Quantity, sum(linetotal) [Sales Amount],
-                    sum(grssprofit)
-                    [Gross Profit]
-                    <br>
-                    FROM <br>(
-                    SELECT T1.itemcode,T1.quantity * (case when T1.objtype = 13 then 1 else -1 end)
-                    Quantity,T1.linetotal *
-                    (case when T1.objtype = 13 then 1 else -1 end) LineTotal, T1.grssprofit * (case when T1.objtype = 13
-                    then 1 else -1 end) GrssProfit<br>
-                    FROM INV1 T1<br>
-                    LEFT JOIN OINV T0 on T0.docentry = T1.docentry<br>
-                    WHERE T0.DocDate between '20150101' and '20151231'<br>
-                    UNION ALL</p>
+                        <div class="box-code">
+                            SELECT rawdata.itemcode [Item Code],mfc.FirmName [Manufacturer], oitm.SWW [Super Product
+                            Name],
+                            oitm.itemname [Item Description],sum(quantity) Quantity, sum(linetotal) [Sales Amount],
+                            sum(grssprofit)
+                            [Gross Profit]
+                            <br>
+                            FROM <br>(
+                            SELECT T1.itemcode,T1.quantity * (case when T1.objtype = 13 then 1 else -1 end)
+                            Quantity,T1.linetotal *
+                            (case when T1.objtype = 13 then 1 else -1 end) LineTotal, T1.grssprofit * (case when
+                            T1.objtype = 13
+                            then 1 else -1 end) GrssProfit<br>
+                            FROM INV1 T1<br>
+                            LEFT JOIN OINV T0 on T0.docentry = T1.docentry<br>
+                            WHERE T0.DocDate between '20150101' and '20151231'<br>
+                            UNION ALL
+                        </div>
+                    </p>
+                </div>
             </article>
             <article>
                 <h3>Query number two</h3>
@@ -106,7 +112,7 @@
         </section>
     </main>
     <footer>Document about Sales Analysis All <br><br> <a href="#top">Return to top of the page</a></footer>
-<script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>

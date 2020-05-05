@@ -8,6 +8,19 @@ body {
     height: 100px;
     display: inline-block;
 }
+.box-maincode {
+    color: rgb(56, 84, 121);
+    background: yellowgreen;
+    min-width: 600px;
+    overflow: auto;
+}
+
+.box-code {
+    color: rgb(56, 84, 121);
+    background: yellowgreen;
+    min-width: 800px;
+}
+    
 
 section {
     background:#ffffff;
