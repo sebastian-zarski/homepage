@@ -2,6 +2,13 @@ body {
     background: lightgray;
 }
 
+.box {
+    background: palegreen;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+}
+
 section {
     background:#ffffff;
 }
