@@ -1,13 +1,37 @@
 body {
     background: lightgray;
+    padding: 10px;
 }
 
-.box {
+
+
+.box-nav {
     background: palegreen;
-    width: 100px;
-    height: 100px;
+    min-width: 85px;
+    max-width: 85px;
+    height: 40px;
     display: inline-block;
+    border-radius: 10px; 
+    text-align: center;
+    padding-top: 5px;
+   
 }
+
+.box-header {
+    color: burlywood;
+    background: black;
+    overflow: auto;
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    border-width: 20px 20px;
+    border-style: solid;
+    border-color: white;
+    border-radius: 40px;
+    
+}
+
+
 .box-maincode {
     color: rgb(56, 84, 121);
     background: yellowgreen;
@@ -54,8 +78,13 @@ color: rgb(80, 142, 204);
 
 nav a {
     color: mediumvioletred;
+    
 }
 
 a {
-    color: orangered !important;
+    color: orangered;
+    text-decoration: unset;
+    cursor: cell;
+    
+    
 }
